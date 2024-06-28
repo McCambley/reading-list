@@ -1,9 +1,12 @@
 async function fetchArticles() {
+  // Do something here idk the server is way more fun
   try {
     const response = await fetch("http://localhost:3000/notion-data"); // Adjust the URL as needed
     const data = await response.json();
 
     const articlesContainer = document.getElementById("articles");
+
+    console.log(data);
 
     data.forEach((article) => {
       const articleDiv = document.createElement("div");

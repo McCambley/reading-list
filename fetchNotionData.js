@@ -15,7 +15,7 @@ const fetchNotionData = async () => {
       },
     }
   );
-  console.log(response.data.results.length);
+  console.log(response.data);
   const linksArray = response.data.results.map((r) => r.properties.Link.url);
   return linksArray;
 };

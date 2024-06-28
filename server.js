@@ -4,6 +4,37 @@ const { fetchNotionData } = require("./fetchNotionData"); // Assuming fetchNotio
 const app = express();
 const PORT = process.env.PORT || 3000;
 
+app.get("/", async (req, res) => {
+  try {
+    const data = await fetchNotionData();
+    const mockParagraph = (link, index) => `
+      <a href="${link}" style="display: block">
+        ${index}: ${link}
+      </a>
+    `;
+
+    const htmlContent = `
+      <!DOCTYPE html>
+      <html>
+        <head>
+          <title>My Express App</title>
+        </head>
+        <body>
+          <h1>Welcome to My Express App</h1>
+          <p>This is an HTML response.</p>
+          ${data.map((link, index) => mockParagraph(link, index)).join("")}
+          <script>
+            console.log("This is a JavaScript response.");
+          </script>
+        </body>
+      </html>
+    `;
+    res.send(htmlContent);
+  } catch (error) {
+    res.status(500).send("Error fetching data");
+  }
+});
+
 app.get("/notion-data", async (req, res) => {
   try {
     const data = await fetchNotionData();
