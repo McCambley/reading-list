@@ -15,10 +15,15 @@ const fetchNotionData = async () => {
       },
     }
   );
-
-  return response.data.results;
+  console.log(response.data.results.length);
+  const linksArray = response.data.results.map((r) => r.properties.Link.url);
+  return linksArray;
 };
 
-fetchNotionData()
-  .then((data) => console.log("data"))
-  .catch((err) => console.error("err"));
+module.exports = {
+  fetchNotionData,
+};
+
+// fetchNotionData()
+//   .then((data) => console.log("data"))
+//   .catch((err) => console.error("err"));

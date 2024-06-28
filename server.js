@@ -1,5 +1,5 @@
 const express = require("express");
-const fetchNotionData = require("./fetchNotionData"); // Assuming fetchNotionData is in the same directory
+const { fetchNotionData } = require("./fetchNotionData"); // Assuming fetchNotionData is in the same directory
 
 const app = express();
 const PORT = process.env.PORT || 3000;
